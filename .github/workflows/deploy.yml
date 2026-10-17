@@ -1,4 +1,4 @@
-name: Test and deploy Control Room
+name: Validate and deploy research page
 on:
   push:
     branches: [main]
@@ -11,57 +11,36 @@ concurrency:
   group: github-pages
   cancel-in-progress: true
 jobs:
-  verify:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Syntax check
-        run: node --check app.js
-      - name: Verify static assets and HTML references
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          html=Path('index.html').read_text()
-          js=Path('app.js').read_text()
-          css=Path('styles.css').read_text()
-          assert '<script src="app.js"' in html
-          assert 'href="styles.css"' in html
-          assert 'id="page"' in html and 'id="shade"' in html
-          assert "render();" in js
-          assert '@media(max-width:760px)' in css
-          assert len(js)>5000 and len(css)>5000
-          print('Static checks passed')
-          PY
-  browser-test:
-    needs: verify
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - run: npm install --no-save playwright
-      - run: npx playwright install chromium --with-deps
-      - run: node tests/smoke.cjs
   deploy:
-    needs: [verify, browser-test]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate research page
+        run: |
+          node --check script.js
+          python - <<'PY'
+          from pathlib import Path
+          h=Path('index.html').read_text()
+          assert '<link rel="stylesheet" href="styles.css">' in h
+          assert '<script src="script.js"' in h
+          for section in ['signals','opportunities','fit','sources']:
+              assert f'id="{section}"' in h
+          assert h.count('https://blog.kraken.com/')>=3
+          assert 'www.payward.com/press-release/our-ai-doctrine' in h
+          assert 'Not affiliated with' in h or 'Not affiliated' in h or 'Not affiliated with or endorsed' in h
+          print('Research page verified')
+          PY
+      - uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: .
       - id: deployment
-        name: Deploy GitHub Pages
         uses: actions/deploy-pages@v4

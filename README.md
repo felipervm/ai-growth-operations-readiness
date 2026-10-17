@@ -1,15 +1,29 @@
-# Control Room — AI Growth Operations
+# The Human Layer — Kraken AI Growth Ops
 
-Independent interactive product concept by Felipe Mattos. A fictional operator workspace for safe AI-native growth campaigns: approval queue, agent-output review, QA regressions, reproducible bug reports and operational monitoring.
+**[Live research landing page](https://felipervm.github.io/ai-growth-operations-readiness/)**
 
-**Synthetic scenarios only. Not affiliated with Kraken. No live campaigns, customer data, or external integrations.**
+A research-backed, independent perspective on where I could contribute to Kraken's AI-native Growth Operations team.
 
-Open `index.html` locally to explore, or use the GitHub Pages deployment after enabled.
+This is **not a fictional control room or a claim to have audited Kraken's internal systems**. It maps three documented public signals to operational questions that align with Kraken's AI Growth Ops role:
 
-### Suggested demo flow
-1. Review the high-risk referral campaign; reject the guarantee claim.
-2. Run the five QA checks; one duplicate-scheduling regression fails intentionally.
-3. Review BUG-017 and copy steps to reproduce.
-4. Reset the demo to restore all fictional data.
+1. [Payward's AI doctrine (Aug. 18, 2026)](https://www.payward.com/press-release/our-ai-doctrine) → deterministic controls, reliable approvals, accountable decisions.
+2. [Kraken's xStocks expansion (Mar. 18, 2026)](https://blog.kraken.com/product/xstocks/celebrating-100-xstocks) → product and market complexity, QA and edge cases.
+3. [Kraken's MiCA campaign communication (Jun. 19, 2026)](https://blog.kraken.com/news/industry-news/europe-mica-switch) → geography, eligibility, policy review.
 
-All interactions are local to the browser. Production use would need authenticated server-side approval trails, roles and policy review.
+## My proposed contribution
+
+- Review agent outputs against clear, approved checklists before release.
+- Keep approval and exception flows understandable, owned and documented.
+- Test regressions and write bug reports engineering can reproduce.
+
+## Fit
+
+**TransPerfect DataForce** — evaluation and auditing of AI outputs.
+**V3A, AI & Innovation** — practical AI workflows and cross-functional collaboration.
+**Independent projects and programming coursework** — QA, Python, SQL and data-quality validation.
+
+## Scope
+
+Prepared by **Felipe Mattos** for the **AI Growth Ops** opportunity. No company affiliation, private data, internal platform access or claim that Kraken has these operational defects. Company facts are sourced; proposed priorities are my interpretations.
+
+Static site: `index.html`, `styles.css`, `script.js`. No backend, credentials or dependencies.
