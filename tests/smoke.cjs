@@ -16,7 +16,7 @@ const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css'};
   const page=await browser.newPage({viewport:{width:1280,height:800}});
   const errors=[];page.on('pageerror',err=>errors.push(err.message));
   await page.goto('http://127.0.0.1:3456/',{waitUntil:'domcontentloaded'});
-  await page.locator('h1').waitFor();assert.match(await page.locator('h1').innerText(),/Keep agents reliable/);
+  await page.waitForTimeout(300);console.log('Initial title:',await page.title());console.log('Body preview:',(await page.locator('body').innerText()).slice(0,800));console.log('Page errors:',errors);await page.locator('h1').waitFor({timeout:5000});assert.match(await page.locator('h1').innerText(),/Keep agents reliable/);
   await page.locator('[data-view="queue"]').click();
   await page.locator('[data-item="GRO-105"]').click();
   page.once('dialog',dialog=>dialog.accept('Unapproved guaranteed-returns claim'));
