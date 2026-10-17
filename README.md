@@ -8,7 +8,7 @@ This is **not a fictional control room or a claim to have audited Kraken's inter
 
 1. [Payward's AI doctrine (Aug. 18, 2026)](https://www.payward.com/press-release/our-ai-doctrine) → deterministic controls, reliable approvals, accountable decisions.
 2. [Kraken's xStocks expansion (Mar. 18, 2026)](https://blog.kraken.com/product/xstocks/celebrating-100-xstocks) → product and market complexity, QA and edge cases.
-3. [Kraken's MiCA campaign communication (Jun. 19, 2026)](https://blog.kraken.com/news/industry-news/europe-mica-switch) → geography, eligibility, policy review.
+3. [Kraken's 30-country EEA MiCA rollout (Aug. 12, 2025)](https://blog.kraken.com/news/all-30-eea-countries-mica) → geography, eligibility, policy review.
 
 ## My proposed contribution
 
